@@ -1,20 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AuthedStack from './features/auth/AuthedStack';
+import UnauthedStack from './features/auth/UnauthedStack';
+import { useAuthentication } from './features/auth/useAuth';
 
 import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+  const { user } = useAuthentication();
 
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        {user ? <AuthedStack /> : <UnauthedStack />}
         <StatusBar />
       </SafeAreaProvider>
     );
