@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { Button, StyleSheet, TextInput } from "react-native";
-import { useLinkTo } from "@react-navigation/native";
 import { Text, View } from "../../components/Themed";
-import { login } from "./useAuth";
+import { login, signup } from "./useAuth";
 
-export default function SignInScreen() {
+export default function SignUpScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
     error: "",
   });
-  const linkTo = useLinkTo();
 
   return (
     <View style={styles.container}>
@@ -37,20 +35,13 @@ export default function SignInScreen() {
         disabled={isLoading}
         onPress={async () => {
           setIsLoading(true);
-          const error = await login(formValue.email, formValue.password);
+          const error = await signup(formValue.email, formValue.password);
           if (error != null) {
             setFormValue({ ...formValue, error: error });
           }
           setIsLoading(false);
         }}
         title={isLoading ? "Loading..." : "Submit"}
-      />
-      <View style={{ height: 20 }} />
-      <Button
-        onPress={() => {
-          linkTo("/Sign up");
-        }}
-        title="Sign up"
       />
     </View>
   );
