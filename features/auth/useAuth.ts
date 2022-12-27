@@ -1,23 +1,55 @@
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { useEffect, useState } from 'react';
-import { auth } from './firebaseConfig';
+import { FirebaseError } from "firebase/app";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  User,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
+import { auth } from "./firebaseConfig";
 
 export function useAuthentication() {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | undefined | null>();
 
   useEffect(() => {
-    const unsubscribeFromAuthStatusChanged = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(undefined);
+    const unsubscribeFromAuthStatusChanged = onAuthStateChanged(
+      auth,
+      (user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+        }
       }
-    });
+    );
 
     return unsubscribeFromAuthStatusChanged;
   }, []);
 
   return {
-    user
+    user,
   };
+}
+
+export async function login(email: string, password: string) {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (e) {
+    const error = e as FirebaseError;
+    console.log(error);
+    switch (error.code) {
+      case "auth/user-not-found":
+        return "User not found";
+      case "auth/invalid-email":
+        return "Invalid email address";
+      case "auth/wrong-password":
+        return "Wrong password";
+      default:
+        return "Unknown error";
+    }
+  }
+}
+
+export function logout() {
+  return signOut(auth);
 }
