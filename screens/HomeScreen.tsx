@@ -1,44 +1,29 @@
 import { useLinkTo } from '@react-navigation/native';
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { View, Button, Pressable } from 'react-native';
+import { ScreenContainer } from '../features/design-system/layouts';
+import { HeadingOne, TextLink } from '../features/design-system/typography';
 
 export default function HomeScreen() {
   const linkTo = useLinkTo();
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <View style={{ height: 20 }} />
-      <Text style={styles.title}>Welcome to your new home screen 👋 </Text>
-      <View style={{ height: 20 }} />
-      <Button
+      <HeadingOne style={{ textAlign: 'center' }}>Welcome to your new home screen 👋 </HeadingOne>
+      <View style={{ height: 32 }} />
+      <Pressable
         onPress={() => {
           linkTo('/Detail');
-        }}
-        title="Go to details screen"
-      />
-      <View style={{ height: 10 }} />
-      <Button
+        }}>
+        <TextLink>Go to details screen</TextLink>
+      </Pressable>
+      <View style={{ height: 20 }} />
+      <Pressable
         onPress={() => {
           linkTo('/InfoModal');
-        }}
-        title="Open info modal"
-      />
-    </View>
+        }}>
+        <TextLink>Open info modal</TextLink>
+      </Pressable>
+    </ScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  link: {
-    fontSize: 16,
-    color: 'blue',
-  },
-});

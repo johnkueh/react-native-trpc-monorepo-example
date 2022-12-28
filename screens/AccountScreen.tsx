@@ -1,25 +1,18 @@
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { View, Button, TouchableOpacity, Pressable } from 'react-native';
 
 import { logout } from '../features/auth/useAuth';
+import { ScreenContainer } from '../features/design-system/layouts';
+import { HeadingTwo, TextLink } from '../features/design-system/typography';
 
 export default function AccountScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to your profile!</Text>
+    <ScreenContainer>
       <View style={{ height: 10 }} />
-      <Button onPress={logout} title="Logout" />
-    </View>
+      <HeadingTwo>Welcome to your profile!</HeadingTwo>
+      <View style={{ height: 20 }} />
+      <Pressable onPress={logout}>
+        <TextLink>Logout</TextLink>
+      </Pressable>
+    </ScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
