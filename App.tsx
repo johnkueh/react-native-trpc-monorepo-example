@@ -20,7 +20,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <StatusBar />
+        <StatusBar style="dark" />
         <ThemeProvider theme={theme}>
           {isLoadingAuth ? <View /> : isAuthed ? <AuthedStack /> : <UnauthedStack />}
         </ThemeProvider>

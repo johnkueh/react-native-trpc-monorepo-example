@@ -18,16 +18,16 @@ export default function SignInScreen() {
 
   return (
     <ScreenContainer>
-      {formValue.error && <Text style={styles.error}>{formValue.error}</Text>}
+      {formValue.error && <Text style={{ color: 'red' }}>{formValue.error}</Text>}
       <View style={{ height: 10 }} />
       <FormLabel>Email</FormLabel>
       <FormInput
         onChangeText={(email) => {
           setFormValue({ ...formValue, email: email });
         }}
-        style={styles.input}
         autoCapitalize="none"
-        placeholder="Email"
+        placeholder="john@doe.com"
+        placeholderTextColor="red"
       />
       <View style={{ height: 20 }} />
       <FormLabel>Password</FormLabel>
@@ -35,8 +35,6 @@ export default function SignInScreen() {
         onChangeText={(password) => {
           setFormValue({ ...formValue, password: password });
         }}
-        style={styles.input}
-        placeholder="Password"
         secureTextEntry={true}
       />
       <View style={{ height: 20 }} />
@@ -62,18 +60,3 @@ export default function SignInScreen() {
     </ScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  error: {
-    color: 'red',
-  },
-  input: {
-    padding: 8,
-    borderWidth: 1,
-    borderColor: '#efefef',
-  },
-});
