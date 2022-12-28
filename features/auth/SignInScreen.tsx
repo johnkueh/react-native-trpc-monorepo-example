@@ -1,15 +1,14 @@
-import { useState } from "react";
-import { Button, StyleSheet, TextInput } from "react-native";
-import { useLinkTo } from "@react-navigation/native";
-import { Text, View } from "../../components/Themed";
-import { login } from "./useAuth";
+import { useState } from 'react';
+import { Text, View, Button, StyleSheet, TextInput } from 'react-native';
+import { useLinkTo } from '@react-navigation/native';
+import { login } from './useAuth';
 
 export default function SignInScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-    error: "",
+    email: '',
+    password: '',
+    error: '',
   });
   const linkTo = useLinkTo();
 
@@ -43,12 +42,12 @@ export default function SignInScreen() {
           }
           setIsLoading(false);
         }}
-        title={isLoading ? "Loading..." : "Submit"}
+        title={isLoading ? 'Loading...' : 'Submit'}
       />
       <View style={{ height: 20 }} />
       <Button
         onPress={() => {
-          linkTo("/Sign up");
+          linkTo('/Sign up');
         }}
         title="Sign up"
       />
@@ -62,11 +61,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   error: {
-    color: "red",
+    color: 'red',
   },
   input: {
     padding: 8,
     borderWidth: 1,
-    borderColor: "#efefef",
+    borderColor: '#efefef',
   },
 });
