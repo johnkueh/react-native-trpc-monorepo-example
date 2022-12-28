@@ -1,7 +1,5 @@
-import { useLinkTo } from "@react-navigation/native";
-import { Button, StyleSheet, TouchableOpacity } from "react-native";
-
-import { Text, View } from "../components/Themed";
+import { useLinkTo } from '@react-navigation/native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
   const linkTo = useLinkTo();
@@ -13,14 +11,14 @@ export default function HomeScreen() {
       <View style={{ height: 20 }} />
       <Button
         onPress={() => {
-          linkTo("/Detail");
+          linkTo('/Detail');
         }}
         title="Go to details screen"
       />
       <View style={{ height: 10 }} />
       <Button
         onPress={() => {
-          linkTo("/InfoModal");
+          linkTo('/InfoModal');
         }}
         title="Open info modal"
       />
@@ -32,15 +30,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: "center",
+    alignItems: 'center',
   },
   title: {
     fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   link: {
     fontSize: 16,
-    color: "blue",
+    color: 'blue',
   },
 });

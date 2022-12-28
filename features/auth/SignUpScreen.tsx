@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { Button, StyleSheet, TextInput } from "react-native";
-import { Text, View } from "../../components/Themed";
-import { login, signup } from "./useAuth";
+import { useState } from 'react';
+import { Text, View, Button, StyleSheet, TextInput } from 'react-native';
+import { signup } from './useAuth';
 
 export default function SignUpScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-    error: "",
+    email: '',
+    password: '',
+    error: '',
   });
 
   return (
@@ -41,7 +40,7 @@ export default function SignUpScreen() {
           }
           setIsLoading(false);
         }}
-        title={isLoading ? "Loading..." : "Submit"}
+        title={isLoading ? 'Loading...' : 'Submit'}
       />
     </View>
   );
@@ -53,11 +52,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   error: {
-    color: "red",
+    color: 'red',
   },
   input: {
     padding: 8,
     borderWidth: 1,
-    borderColor: "#efefef",
+    borderColor: '#efefef',
   },
 });

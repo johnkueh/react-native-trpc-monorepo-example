@@ -1,10 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import AuthedStack from "./features/auth/AuthedStack";
-import UnauthedStack from "./features/auth/UnauthedStack";
-import { useAuthentication } from "./features/auth/useAuth";
-import { View } from "./components/Themed";
-import useCachedResources from "./hooks/useCachedResources";
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AuthedStack from './features/auth/AuthedStack';
+import UnauthedStack from './features/auth/UnauthedStack';
+import { useAuthentication } from './features/auth/useAuth';
+import useCachedResources from './hooks/useCachedResources';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -19,13 +19,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <StatusBar />
-        {isLoadingAuth ? (
-          <View />
-        ) : isAuthed ? (
-          <AuthedStack />
-        ) : (
-          <UnauthedStack />
-        )}
+        {isLoadingAuth ? <View /> : isAuthed ? <AuthedStack /> : <UnauthedStack />}
       </SafeAreaProvider>
     );
   }
