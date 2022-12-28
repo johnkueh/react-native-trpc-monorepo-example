@@ -1,16 +1,28 @@
-import { Button, StyleSheet } from 'react-native';
+import { useLinkTo } from "@react-navigation/native";
+import { Button, StyleSheet, TouchableOpacity } from "react-native";
 
-import { Text, View } from '../components/Themed';
-import { logout } from '../features/auth/useAuth';
+import { Text, View } from "../components/Themed";
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
+  const linkTo = useLinkTo();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <View style={{height: 10}} />
+      <View style={{ height: 20 }} />
+      <Text style={styles.title}>Welcome to your new home screen 👋 </Text>
+      <View style={{ height: 20 }} />
       <Button
-        onPress={logout}
-        title="Logout"
+        onPress={() => {
+          linkTo("/Detail");
+        }}
+        title="Go to details screen"
+      />
+      <View style={{ height: 10 }} />
+      <Button
+        onPress={() => {
+          linkTo("/InfoModal");
+        }}
+        title="Open info modal"
       />
     </View>
   );
@@ -19,11 +31,16 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    alignItems: "center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  link: {
+    fontSize: 16,
+    color: "blue",
   },
 });
