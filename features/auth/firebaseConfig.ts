@@ -2,14 +2,15 @@ import { initializeApp } from 'firebase/app';
 // From https://stackoverflow.com/a/73352941
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { initializeAuth, getReactNativePersistence} from 'firebase/auth/react-native';
+import Constants from 'expo-constants';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBACUWr3lGje0_g5Sra74gNv8ATBZM7UnE",
-  authDomain: "werewolves-tv.firebaseapp.com",
-  projectId: "werewolves-tv",
-  storageBucket: "werewolves-tv.appspot.com",
-  messagingSenderId: "804498108167",
-  appId: "1:804498108167:web:4565bfd407f67807d41fa2"
+  apiKey: Constants.manifest?.extra?.firebaseApiKey,
+  authDomain: Constants.manifest?.extra?.firebaseAuthDomain,
+  projectId: Constants.manifest?.extra?.firebaseProjectId,
+  storageBucket: Constants.manifest?.extra?.firebaseStorageBucket,
+  messagingSenderId: Constants.manifest?.extra?.firebaseMessagingSenderId,
+  appId: Constants.manifest?.extra?.firebaseAppId,
 };
 
 export const app = initializeApp(firebaseConfig);
