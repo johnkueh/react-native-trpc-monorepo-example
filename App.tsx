@@ -5,6 +5,8 @@ import AuthedStack from './features/auth/AuthedStack';
 import UnauthedStack from './features/auth/UnauthedStack';
 import { useAuthentication } from './features/auth/useAuth';
 import useCachedResources from './hooks/useCachedResources';
+import { theme } from './features/design-system/theme';
+import { ThemeProvider } from './features/design-system/styled-components';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -19,7 +21,9 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <StatusBar />
-        {isLoadingAuth ? <View /> : isAuthed ? <AuthedStack /> : <UnauthedStack />}
+        <ThemeProvider theme={theme}>
+          {isLoadingAuth ? <View /> : isAuthed ? <AuthedStack /> : <UnauthedStack />}
+        </ThemeProvider>
       </SafeAreaProvider>
     );
   }

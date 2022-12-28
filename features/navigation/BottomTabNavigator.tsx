@@ -1,6 +1,7 @@
 import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
+import { useTheme } from 'styled-components/native';
 import AccountScreen from '../../screens/AccountScreen';
 import HomeScreen from '../../screens/HomeScreen';
 import HomeStack from './HomeStack';
@@ -8,11 +9,13 @@ import HomeStack from './HomeStack';
 const BottomTab = createBottomTabNavigator();
 
 export function BottomTabNavigator() {
+  const theme = useTheme();
+
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: theme.colors.global.primary,
       }}>
       <BottomTab.Screen
         name="Home Tab"
@@ -42,5 +45,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof AntDesign>['name'];
   color: string;
 }) {
-  return <AntDesign size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <AntDesign size={24} style={{ marginBottom: -3 }} {...props} />;
 }

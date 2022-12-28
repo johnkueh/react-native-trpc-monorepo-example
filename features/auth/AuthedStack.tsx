@@ -1,16 +1,25 @@
 import React from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomTabNavigator } from '../navigation/BottomTabNavigator';
 import InfoScreen from '../../screens/InfoScreen';
-import { Pressable } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { useTheme } from 'styled-components/native';
+import { ModalCloseButton } from '../navigation/ModalCloseButton';
 
 const Stack = createNativeStackNavigator();
 
 export default function AuthedStack() {
+  const theme = useTheme();
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          primary: theme.colors.global.primary,
+        },
+      }}>
       <Stack.Navigator>
         <Stack.Screen
           name="Tab Home"
@@ -22,22 +31,12 @@ export default function AuthedStack() {
             name="InfoModal"
             options={{
               title: 'Info',
-              headerRight: () => <BackButton />,
+              headerRight: () => <ModalCloseButton />,
             }}
             component={InfoScreen}
           />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
-  );
-}
-
-function BackButton() {
-  const navigation = useNavigation();
-
-  return (
-    <Pressable onPress={() => navigation.goBack()}>
-      <AntDesign name="close" size={24} color="black" />
-    </Pressable>
   );
 }

@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Text, View, Button, StyleSheet, TextInput } from 'react-native';
+import { PrimaryButton } from '../design-system/buttons';
+import { FormInput, FormLabel } from '../design-system/forms';
+import { ScreenContainer } from '../design-system/layouts';
 import { signup } from './useAuth';
 
 export default function SignUpScreen() {
@@ -11,10 +14,11 @@ export default function SignUpScreen() {
   });
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       {formValue.error && <Text style={styles.error}>{formValue.error}</Text>}
       <View style={{ height: 10 }} />
-      <TextInput
+      <FormLabel>Email</FormLabel>
+      <FormInput
         onChangeText={(email) => {
           setFormValue({ ...formValue, email: email });
         }}
@@ -22,7 +26,9 @@ export default function SignUpScreen() {
         autoCapitalize="none"
         placeholder="Email"
       />
-      <TextInput
+      <View style={{ height: 20 }} />
+      <FormLabel>Password</FormLabel>
+      <FormInput
         onChangeText={(password) => {
           setFormValue({ ...formValue, password: password });
         }}
@@ -30,8 +36,9 @@ export default function SignUpScreen() {
         placeholder="Password"
         secureTextEntry={true}
       />
-      <Button
-        disabled={isLoading}
+      <View style={{ height: 20 }} />
+      <PrimaryButton
+        isLoading={isLoading}
         onPress={async () => {
           setIsLoading(true);
           const error = await signup(formValue.email, formValue.password);
@@ -40,9 +47,9 @@ export default function SignUpScreen() {
           }
           setIsLoading(false);
         }}
-        title={isLoading ? 'Loading...' : 'Submit'}
+        title="Sign up"
       />
-    </View>
+    </ScreenContainer>
   );
 }
 
