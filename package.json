@@ -5,9 +5,11 @@
     "projects/*"
   ],
   "dependencies": {
+    "prettier": "^2.8.1",
     "turbo": "^1.6.3"
   },
   "scripts": {
-    "dev": "turbo run dev --parallel"
+    "dev": "turbo run dev --parallel",
+    "pretty": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\""
   }
 }

@@ -9,7 +9,7 @@ const workspaceRoot = path.resolve(projectRoot, '../..');
 
 const config = getDefaultConfig(projectRoot);
 
-// For Firebase 
+// For Firebase
 // https://docs.expo.dev/guides/using-firebase/
 config.resolver.assetExts.push('cjs');
 

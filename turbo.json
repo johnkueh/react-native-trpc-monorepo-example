@@ -5,15 +5,11 @@
       "cache": false
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
     "web#build": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "outputs": [".next/**"]
     }
   }

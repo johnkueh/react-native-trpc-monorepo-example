@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import { trpc } from './trpc';
 
 type AppProps = {
-  children?: React.ReactNode
-}
+  children?: React.ReactNode;
+};
 
-export function TRPCProvider({children}: AppProps) {
+export function TRPCProvider({ children }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
@@ -23,13 +23,11 @@ export function TRPCProvider({children}: AppProps) {
           },
         }),
       ],
-    }),
+    })
   );
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </trpc.Provider>
   );
 }
