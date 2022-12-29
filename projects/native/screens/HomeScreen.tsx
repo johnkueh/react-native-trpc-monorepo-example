@@ -1,17 +1,10 @@
 import { useLinkTo } from '@react-navigation/native';
-import { View, Button, Pressable } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { ScreenContainer } from '../features/design-system/layouts';
-import {
-  HeadingOne,
-  HeadingTwo,
-  TextLink,
-  TextSingleM400,
-} from '../features/design-system/typography';
+import { HeadingOne, TextLink, TextSingleM400 } from '../features/design-system/typography';
 import { trpc } from '../utils/trpc';
 
 export default function HomeScreen() {
-  const greetingByName = trpc.hello.byName.useQuery({ name: 'John' });
-
   const linkTo = useLinkTo();
 
   return (
