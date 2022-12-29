@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@packages/database": "*",
     "@trpc/server": "^10.7.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
