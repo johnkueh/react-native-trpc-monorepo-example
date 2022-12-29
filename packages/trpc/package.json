@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@trpc/server": "^10.7.0",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {
