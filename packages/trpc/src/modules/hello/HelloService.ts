@@ -1,21 +1,12 @@
 import { singleton } from 'tsyringe';
+import { Database } from '../../database';
 
 @singleton()
 export class HelloService {
-  constructor() {}
+  constructor(private db: Database) {}
 
   public getGreetings = async () => {
-    return [
-      {
-        message: 'Bienvenido a tu nuevo hogar.',
-      },
-      {
-        message: 'Benvenuto nella tua nuova casa.',
-      },
-      {
-        message: 'Bienvenue dans votre nouvelle maison.',
-      },
-    ];
+    return this.db.client.greeting.findMany();
   };
 
   public getGreetingForName = async (name: string) => {
