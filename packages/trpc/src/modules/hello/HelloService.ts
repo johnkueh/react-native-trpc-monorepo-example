@@ -1,12 +1,12 @@
 import { singleton } from 'tsyringe';
-import { Prisma } from '../../prisma';
+import { Database } from '../../database';
 
 @singleton()
 export class HelloService {
-  constructor(private prisma: Prisma) {}
+  constructor(private db: Database) {}
 
   public getGreetings = async () => {
-    return this.prisma.client.greeting.findMany();
+    return this.db.client.greeting.findMany();
   };
 
   public getGreetingForName = async (name: string) => {
