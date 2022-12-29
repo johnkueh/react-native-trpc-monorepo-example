@@ -14,7 +14,8 @@ export function TRPCProvider({children}: AppProps) {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `${Constants.manifest?.extra?.apiBaseUrl}/api/trpc`,
+          // From https://stackoverflow.com/a/74556991
+          url: `${Constants.expoConfig?.extra?.apiBaseUrl}/api/trpc`,
           headers() {
             return {
               // authorization: getAuthCookie(),

@@ -30,7 +30,16 @@ export default {
     web: {
       favicon: "./assets/images/favicon.png",
     },
+    updates: {
+      url: 'https://u.expo.dev/78c9e865-69b0-4f90-8fa6-0ce84b7e655b',
+    },
+    runtimeVersion: {
+      policy: 'sdkVersion',
+    },
     extra: {
+      eas: {
+        projectId: '78c9e865-69b0-4f90-8fa6-0ce84b7e655b',
+      },
       firebaseApiKey: process.env.FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
       firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
