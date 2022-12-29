@@ -3,6 +3,18 @@
   "pipeline": {
     "dev": {
       "cache": false
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "web#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [".next/**"]
     }
   }
 }
