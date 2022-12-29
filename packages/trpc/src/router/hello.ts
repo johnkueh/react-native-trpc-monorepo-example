@@ -5,7 +5,13 @@ export const helloRouter = router({
   all: publicProcedure.query(({ ctx }) => {
     return [
       {
-        message: 'hello world'
+        message: 'Bienvenido a tu nuevo hogar'
+      },
+      {
+        message: 'Benvenuto nella tua nuova casa'
+      },
+      {
+        message: 'Bienvenue dans votre nouvelle maison'
       }
     ];
   }),
@@ -13,7 +19,7 @@ export const helloRouter = router({
     name: z.string(),
   })).query(({ ctx, input }) => {
     return {
-      message: `hello ${input.name}`
+      message: `Your name is: ${input.name}`
     };
   }),
   // create: publicProcedure

@@ -1,15 +1,28 @@
 import { useLinkTo } from '@react-navigation/native';
 import { View, Button, Pressable } from 'react-native';
 import { ScreenContainer } from '../features/design-system/layouts';
-import { HeadingOne, TextLink } from '../features/design-system/typography';
+import {
+  HeadingOne,
+  HeadingTwo,
+  TextLink,
+  TextSingleM400,
+} from '../features/design-system/typography';
+import { trpc } from '../utils/trpc';
 
 export default function HomeScreen() {
+  const greetingByName = trpc.hello.byName.useQuery({ name: 'John' });
+
   const linkTo = useLinkTo();
 
   return (
     <ScreenContainer>
       <View style={{ height: 20 }} />
       <HeadingOne style={{ textAlign: 'center' }}>Welcome to your new home screen 👋 </HeadingOne>
+      <View style={{ height: 10 }} />
+
+      <HelloAll />
+      <HelloByName name="John" />
+
       <View style={{ height: 32 }} />
       <Pressable
         onPress={() => {
@@ -25,5 +38,37 @@ export default function HomeScreen() {
         <TextLink>Open info modal</TextLink>
       </Pressable>
     </ScreenContainer>
+  );
+}
+
+function HelloAll() {
+  const result = trpc.hello.all.useQuery();
+  if (!result.data) return null;
+
+  return (
+    <>
+      <View style={{ height: 10 }} />
+      {result.data.map((entries) => (
+        <TextSingleM400 key={entries.message}>{entries.message}</TextSingleM400>
+      ))}
+    </>
+  );
+}
+
+interface HelloByNameProps {
+  name: string;
+}
+
+function HelloByName({ name }: HelloByNameProps) {
+  const result = trpc.hello.byName.useQuery({
+    name: name,
+  });
+  if (!result.data) return null;
+
+  return (
+    <>
+      <View style={{ height: 10 }} />
+      <TextSingleM400>{result.data.message}</TextSingleM400>
+    </>
   );
 }
