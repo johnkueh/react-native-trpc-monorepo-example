@@ -1,0 +1,7 @@
+###
+GET  http://localhost:3000/api/trpc/hello.all
+Content-Type: application/json
+
+###
+GET  http://localhost:3000/api/trpc/hello.byName?input=%7B%0A%20%20%20%20%20%20%20%20%22name%22%3A%20%22John%22%0A%20%20%20%20%7D
+Content-Type: application/json
