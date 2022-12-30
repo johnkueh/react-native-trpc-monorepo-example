@@ -5,6 +5,10 @@ interface UpdateUserInput {
   name: string;
 }
 
+interface CreateUserInput extends UpdateUserInput {
+  email: string;
+}
+
 @singleton()
 export class UserService {
   constructor(private db: Database) {}
@@ -13,6 +17,15 @@ export class UserService {
     return this.db.client.user.findFirst({
       where: {
         id: id,
+      },
+    });
+  };
+
+  public createUser = async (id: string, input: CreateUserInput) => {
+    return this.db.client.user.create({
+      data: {
+        id,
+        ...input,
       },
     });
   };

@@ -14,13 +14,13 @@ export function UpdateUserForm({ user: { name } }: UserFormDefaults) {
   const [formValue, setFormValue] = useState({
     name: name ?? '',
   });
+  const utils = trpc.useContext();
   const mutateUser = trpc.user.update.useMutation({
     onSuccess: () => {
-      utils.user.current.invalidate();
+      utils.user.invalidate();
     },
   });
   const navigation = useNavigation();
-  const utils = trpc.useContext();
 
   return (
     <>

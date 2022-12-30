@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Text, View, Button, StyleSheet, TextInput, Pressable } from 'react-native';
 import { useLinkTo } from '@react-navigation/native';
-import { login } from './useAuth';
-import { ScreenContainer } from '../design-system/layouts';
-import { TextLink } from '../design-system/typography';
+import { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { PrimaryButton } from '../design-system/buttons';
 import { FormInput, FormLabel } from '../design-system/forms';
+import { ScreenContainer } from '../design-system/layouts';
+import { TextLink } from '../design-system/typography';
+import { login } from './useAuth';
 
 export default function SignInScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +27,6 @@ export default function SignInScreen() {
         }}
         autoCapitalize="none"
         placeholder="john@doe.com"
-        placeholderTextColor="red"
       />
       <View style={{ height: 20 }} />
       <FormLabel>Password</FormLabel>
