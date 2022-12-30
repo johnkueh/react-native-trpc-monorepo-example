@@ -14,7 +14,7 @@ export default function HomeScreen() {
       <View style={{ height: 10 }} />
 
       <HelloAll />
-      <HelloByName name="John" />
+      <HelloCurrentUser />
 
       <View style={{ height: 32 }} />
       <Pressable
@@ -48,20 +48,14 @@ function HelloAll() {
   );
 }
 
-interface HelloByNameProps {
-  name: string;
-}
-
-function HelloByName({ name }: HelloByNameProps) {
-  const result = trpc.hello.byName.useQuery({
-    name: name,
-  });
+function HelloCurrentUser() {
+  const result = trpc.user.current.useQuery();
   if (!result.data) return null;
 
   return (
     <>
       <View style={{ height: 10 }} />
-      <TextSingleM400>{result.data.message}</TextSingleM400>
+      <TextSingleM400>Your name is: {result.data.name}</TextSingleM400>
     </>
   );
 }

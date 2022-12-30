@@ -11,3 +11,9 @@ model Greeting {
   id     Int     @id @default(autoincrement())
   message    String?
 }
+
+model User {
+  id String @id() @default(cuid())
+  email String?
+  name String?
+}

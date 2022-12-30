@@ -3,6 +3,7 @@ import { httpBatchLink } from '@trpc/client';
 import Constants from 'expo-constants';
 import React, { useState } from 'react';
 import { trpc } from './trpc';
+import { auth } from '../features/auth/firebaseConfig';
 
 type AppProps = {
   children?: React.ReactNode;
@@ -16,10 +17,14 @@ export function TRPCProvider({ children }: AppProps) {
         httpBatchLink({
           // From https://stackoverflow.com/a/74556991
           url: `${Constants.expoConfig?.extra?.apiBaseUrl}/api/trpc`,
-          headers() {
-            return {
-              // authorization: getAuthCookie(),
-            };
+          // From https://github.com/trpc/trpc/discussions/1686#discussioncomment-3831581
+          async headers() {
+            const token = (await auth.currentUser?.getIdToken()) || '';
+            return token
+              ? {
+                  Authorization: `Bearer ${token}`,
+                }
+              : {};
           },
         }),
       ],

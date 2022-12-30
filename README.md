@@ -8,3 +8,4 @@
 - [x] [Monorepo via yarn workspaces / turborepo](https://github.com/johnkueh/react-native-expo-example/pull/6)
 - [x] [API calls via tRPC](https://github.com/johnkueh/react-native-expo-example/pull/7)
 - [x] [Prisma as database](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/9)
+- [x] [Server-side auth session](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/10)

@@ -1,3 +1,18 @@
+// Retrieve user jwt
+# @name getJwt
+POST  https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBACUWr3lGje0_g5Sra74gNv8ATBZM7UnE
+Content-Type: application/json
+
+{
+  "email": "john.kueh@gmail.com",
+  "password": "password",
+  "returnSecureToken": true
+}
+
+###
+
+@jwt = {{getJwt.response.body.$.idToken}}
+
 ###
 GET  http://0.0.0.0:3000/api/trpc/hello.all
 Content-Type: application/json
@@ -5,3 +20,8 @@ Content-Type: application/json
 ###
 GET  http://0.0.0.0:3000/api/trpc/hello.byName?input=%7B%0A%20%20%20%20%20%20%20%20%22name%22%3A%20%22John%22%0A%20%20%20%20%7D
 Content-Type: application/json
+
+###
+GET  http://0.0.0.0:3000/api/trpc/user.current
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
