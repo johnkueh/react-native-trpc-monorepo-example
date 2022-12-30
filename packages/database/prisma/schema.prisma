@@ -8,11 +8,16 @@ datasource db {
 }
 
 model Greeting {
-  id     Int     @id @default(autoincrement())
-  message    String?
+  id Int @id @default(autoincrement())
+  message String?
+  userId String @default("")
+  user   User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 model User {
+  greetings Greeting[]
   id String @id() @default(cuid())
   email String
   name String
