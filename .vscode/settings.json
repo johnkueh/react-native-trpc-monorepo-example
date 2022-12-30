@@ -2,5 +2,13 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
+  },
+  "rest-client.environmentVariables": {
+    "local": {
+      "apiBaseUrl": "http://0.0.0.0:3000"
+    },
+    "dev": {
+      "apiBaseUrl": "https://react-native-expo-example-web.vercel.app"
+    }
   }
 }

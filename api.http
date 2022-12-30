@@ -14,14 +14,14 @@ Content-Type: application/json
 @jwt = {{getJwt.response.body.$.idToken}}
 
 ###
-GET  http://0.0.0.0:3000/api/trpc/hello.all
+GET {{apiBaseUrl}}/api/trpc/hello.all
 Content-Type: application/json
 
 ###
-GET  http://0.0.0.0:3000/api/trpc/hello.byName?input=%7B%0A%20%20%20%20%20%20%20%20%22name%22%3A%20%22John%22%0A%20%20%20%20%7D
+GET {{apiBaseUrl}}/api/trpc/hello.byName?input=%7B%0A%20%20%20%20%20%20%20%20%22name%22%3A%20%22John%22%0A%20%20%20%20%7D
 Content-Type: application/json
 
 ###
-GET  http://0.0.0.0:3000/api/trpc/user.current
+GET {{apiBaseUrl}}/api/trpc/user.current
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
