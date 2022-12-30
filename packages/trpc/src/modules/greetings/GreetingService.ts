@@ -20,7 +20,9 @@ export class GreetingService {
   public getByUserId = async (userId: string) => {
     return this.db.client.greeting.findMany({
       where: {
-        userId: userId,
+        user: {
+          id: userId,
+        },
       },
     });
   };
