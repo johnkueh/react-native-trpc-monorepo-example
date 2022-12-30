@@ -1,5 +1,6 @@
-import { initTRPC, TRPCError } from '@trpc/server';
+import { initTRPC } from '@trpc/server';
 import { Context } from './context';
+import { UnauthenticatedError } from './errors';
 
 const t = initTRPC.context<Context>().create({
   // transformer: transformer,
@@ -10,10 +11,7 @@ const t = initTRPC.context<Context>().create({
 
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session) {
-    throw new TRPCError({
-      code: 'UNAUTHORIZED',
-      message: 'Not authenticated',
-    });
+    throw UnauthenticatedError;
   }
 
   return next({
@@ -23,6 +21,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
+export const middleware = t.middleware;
 export const router = t.router;
 export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthed);

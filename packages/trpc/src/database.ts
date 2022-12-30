@@ -1,9 +1,11 @@
-import { singleton } from 'tsyringe';
 import { PrismaClient } from '@packages/database';
+import { singleton } from 'tsyringe';
 
 @singleton()
 export class Database {
-  constructor() {}
+  public readonly client;
 
-  public client = new PrismaClient();
+  constructor() {
+    this.client = new PrismaClient();
+  }
 }

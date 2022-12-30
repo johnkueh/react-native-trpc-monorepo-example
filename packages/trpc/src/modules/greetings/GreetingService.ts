@@ -9,7 +9,7 @@ interface GreetingInput {
 export class GreetingService {
   constructor(private db: Database) {}
 
-  public getById = async (id: number) => {
+  public findById = async (id: number) => {
     return this.db.client.greeting.findFirst({
       where: {
         id,
@@ -17,7 +17,18 @@ export class GreetingService {
     });
   };
 
-  public getByUserId = async (userId: string) => {
+  public findByIdForUser = async (id: number, userId: string) => {
+    return this.db.client.greeting.findFirst({
+      where: {
+        id,
+        user: {
+          id: userId,
+        },
+      },
+    });
+  };
+
+  public findAllForUser = async (userId: string) => {
     return this.db.client.greeting.findMany({
       where: {
         user: {
@@ -27,7 +38,7 @@ export class GreetingService {
     });
   };
 
-  public createForUser = async (userId: string, greeting: GreetingInput) => {
+  public create = async (userId: string, greeting: GreetingInput) => {
     return this.db.client.greeting.create({
       data: {
         ...greeting,
