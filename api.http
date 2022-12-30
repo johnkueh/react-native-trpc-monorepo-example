@@ -22,3 +22,19 @@ Authorization: Bearer {{jwt}}
 GET {{apiBaseUrl}}/api/trpc/greeting.all
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
+
+###
+GET {{apiBaseUrl}}/api/trpc/greeting.byId?input=%7B%0A%20%20%20%20%20%20%20%20%22id%22%3A%2015%0A%20%20%20%20%7D
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+###
+# @name unauthenticated
+GET {{apiBaseUrl}}/api/trpc/greeting.byId?input=%7B%0A%20%20%20%20%20%20%20%20%22id%22%3A%2020%0A%20%20%20%20%7D
+Content-Type: application/json
+
+###
+# @name forbidden
+GET {{apiBaseUrl}}/api/trpc/greeting.byId?input=%7B%0A%20%20%20%20%20%20%20%20%22id%22%3A%2020%0A%20%20%20%20%7D
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
