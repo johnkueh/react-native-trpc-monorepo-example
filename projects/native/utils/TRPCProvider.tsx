@@ -9,6 +9,8 @@ type AppProps = {
   children?: React.ReactNode;
 };
 
+export const apiBaseUrl = `${Constants.expoConfig?.extra?.apiBaseUrl}/api/trpc`;
+
 export function TRPCProvider({ children }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
@@ -16,7 +18,7 @@ export function TRPCProvider({ children }: AppProps) {
       links: [
         httpBatchLink({
           // From https://stackoverflow.com/a/74556991
-          url: `${Constants.expoConfig?.extra?.apiBaseUrl}/api/trpc`,
+          url: apiBaseUrl,
           // From https://github.com/trpc/trpc/discussions/1686#discussioncomment-3831581
           async headers() {
             const token = (await auth.currentUser?.getIdToken()) || '';

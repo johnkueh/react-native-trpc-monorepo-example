@@ -1,8 +1,11 @@
 import { useLinkTo } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
 import { View, Pressable } from 'react-native';
+import { auth } from '../features/auth/firebaseConfig';
 import { ScreenContainer } from '../features/design-system/layouts';
 import { HeadingOne, TextLink, TextSingleM400 } from '../features/design-system/typography';
 import { trpc } from '../utils/trpc';
+import { apiBaseUrl } from '../utils/TRPCProvider';
 
 export default function HomeScreen() {
   const linkTo = useLinkTo();
@@ -10,6 +13,7 @@ export default function HomeScreen() {
   return (
     <ScreenContainer>
       <View style={{ height: 20 }} />
+
       <HeadingOne style={{ textAlign: 'center' }}>Welcome to your new home screen 👋 </HeadingOne>
       <View style={{ height: 10 }} />
 
