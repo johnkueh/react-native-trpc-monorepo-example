@@ -12,7 +12,7 @@ interface UserFormDefaults {
 
 export function UpdateUserForm({ user: { name } }: UserFormDefaults) {
   const [formValue, setFormValue] = useState({
-    name: name ?? '',
+    name: name,
   });
   const utils = trpc.useContext();
   const mutateUser = trpc.user.update.useMutation({
