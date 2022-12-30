@@ -1,13 +1,13 @@
 import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HeaderBackground } from '@react-navigation/elements';
 import * as React from 'react';
 import { useTheme } from 'styled-components/native';
 import AccountScreen from '../../screens/AccountScreen';
+import DebugScreen from '../../screens/DebugScreen';
 import DetailScreen from '../../screens/DetailScreen';
 import HomeScreen from '../../screens/HomeScreen';
-import styled from '../../features/design-system/styled-components';
+import UpdateUserScreen from '../../screens/UpdateUserScreen';
 import { screenOptions } from './screen-options';
 
 const BottomTab = createBottomTabNavigator();
@@ -46,6 +46,14 @@ export function BottomTabNavigator() {
         {(prop) => (
           <AccountStack.Navigator screenOptions={screenOptions}>
             <AccountStack.Screen name="Account" component={AccountScreen} />
+            <AccountStack.Screen name="Update User" component={UpdateUserScreen} />
+            <AccountStack.Screen
+              name="Debug"
+              options={{
+                title: 'Debug 😈',
+              }}
+              component={DebugScreen}
+            />
           </AccountStack.Navigator>
         )}
       </BottomTab.Screen>

@@ -1,11 +1,8 @@
 import { useLinkTo } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
-import { View, Pressable } from 'react-native';
-import { auth } from '../features/auth/firebaseConfig';
+import { Pressable, View } from 'react-native';
 import { ScreenContainer } from '../features/design-system/layouts';
 import { HeadingOne, TextLink, TextSingleM400 } from '../features/design-system/typography';
 import { trpc } from '../utils/trpc';
-import { apiBaseUrl } from '../utils/TRPCProvider';
 
 export default function HomeScreen() {
   const linkTo = useLinkTo();

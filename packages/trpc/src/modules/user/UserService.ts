@@ -1,6 +1,10 @@
 import { singleton } from 'tsyringe';
 import { Database } from '../../database';
 
+interface UpdateUserInput {
+  name: string;
+}
+
 @singleton()
 export class UserService {
   constructor(private db: Database) {}
@@ -10,6 +14,15 @@ export class UserService {
       where: {
         id: id,
       },
+    });
+  };
+
+  public updateUser = async (id: string, input: UpdateUserInput) => {
+    return this.db.client.user.update({
+      where: {
+        id: id,
+      },
+      data: input,
     });
   };
 }

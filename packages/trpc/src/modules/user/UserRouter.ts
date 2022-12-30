@@ -1,6 +1,6 @@
-import { router, publicProcedure, protectedProcedure } from '../../trpc';
-import { z } from 'zod';
 import { singleton } from 'tsyringe';
+import { z } from 'zod';
+import { protectedProcedure, router } from '../../trpc';
 import { UserService } from './UserService';
 
 @singleton()
@@ -10,6 +10,9 @@ export class UserRouter {
   public router = router({
     current: protectedProcedure.query(({ ctx }) => {
       return this.userService.getUserById(ctx.session.id);
+    }),
+    update: protectedProcedure.input(z.object({ name: z.string() })).mutation(({ ctx, input }) => {
+      return this.userService.updateUser(ctx.session.id, input);
     }),
   });
 }

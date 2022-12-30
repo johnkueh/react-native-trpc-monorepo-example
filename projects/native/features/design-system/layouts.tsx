@@ -5,3 +5,8 @@ export const ScreenContainer = styled.ScrollView((props) => ({
   flex: 1,
   background: props.theme.colors.background.base,
 }));
+
+export const Divider = styled.View((props) => ({
+  height: 1,
+  background: props.theme.colors.global.border,
+}));
