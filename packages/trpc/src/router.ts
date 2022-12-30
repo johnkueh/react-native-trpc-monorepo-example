@@ -1,12 +1,12 @@
 import 'reflect-metadata';
 import { container } from 'tsyringe';
-import { router } from './trpc';
-import { HelloRouter } from './modules/hello';
+import { GreetingRouter } from './modules/greetings';
 import { UserRouter } from './modules/user';
+import { router } from './trpc';
 
 export const appRouter = router({
-  hello: container.resolve(HelloRouter).router,
   user: container.resolve(UserRouter).router,
+  greeting: container.resolve(GreetingRouter).router,
 });
 
 export type AppRouter = typeof appRouter;
