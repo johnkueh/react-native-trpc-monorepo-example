@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "expo start",
-    "start": "expo start",
+    "start:dev": "NODE_ENV=dev expo start",
+    "start:local": "NODE_ENV=local expo start",
+    "update:dev": "NODE_ENV=dev eas update --channel development",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll",
-    "update:dev": "eas update --channel development"
+    "test": "jest --watchAll"
   },
   "jest": {
     "preset": "jest-expo"
