@@ -10,3 +10,4 @@
 - [x] [Prisma as database](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/9)
 - [x] [Server-side auth session](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/10)
 - [x] [tRPC mutating server data and results on client](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/11)
+- [x] [Access control](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/13)
