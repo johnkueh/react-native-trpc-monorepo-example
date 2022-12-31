@@ -11,3 +11,16 @@
 - [x] [Server-side auth session](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/10)
 - [x] [tRPC mutating server data and results on client](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/11)
 - [x] [Access control](https://github.com/johnkueh/react-native-trpc-monorepo-example/pull/13)
+
+### Before getting started
+
+- [Prisma with PlanetScale quickstart](https://planetscale.com/docs/tutorials/prisma-quickstart)
+- [Firebase quickstart](https://firebase.google.com/docs/auth/web/start)
+
+### Getting started
+
+- Follow [Expo's installation guide](https://docs.expo.dev/get-started/installation/)
+- Copy `.env.example` and fill in your firebase and database details
+- `yarn` to install all dependencies
+- `yarn workspace web dev` to start the API
+- `yarn workspace native start:local` to start the mobile app
